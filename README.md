@@ -4,7 +4,7 @@
 ввод 
 вывод
 ## 4 балла
-![4_1](https://github.com/kolpakovee/avs_idz1/blob/main/criteria/4_1.png)
+![image4](https://github.com/kolpakovee/avs_idz1/blob/main/criteria/4_1.png)
 - В проекте это файл main.c
 ---
 ![4_2](https://github.com/kolpakovee/avs_idz1/blob/main/criteria/4_2.png)
