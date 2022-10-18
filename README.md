@@ -69,7 +69,6 @@ void outResult(int sizeA){
 ![5_2](https://github.com/kolpakovee/avs_idz1/blob/main/criteria/5_2.png)
 
 - Локальные переменные использованы(Например, value в функции getArrayA и sizeA в функции main). Это можно увидеть в файле main.c
----
 ```
 int value;
 
