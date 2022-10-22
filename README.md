@@ -63,7 +63,7 @@ ArrayB: 1 4 9 25 36 49 64 81 100
 Вывод программы на GAS:
 
 ![](https://github.com/kolpakovee/avs_idz1/blob/main/tests/test1GAS.png)
-
+---
 2) Ввод: 
 ```
 0
@@ -81,7 +81,7 @@ ArrayB:
 Вывод программы на GAS:
 
 ![](https://github.com/kolpakovee/avs_idz1/blob/main/tests/test2GAS.png)
-
+---
 3) Ввод: 
 ```
 1001
@@ -99,7 +99,7 @@ You entered an invalid number.
 Вывод программы на GAS:
 
 ![](https://github.com/kolpakovee/avs_idz1/blob/main/tests/test3GAS.png)
-
+---
 4) Ввод: 
 ```
 10
@@ -118,7 +118,7 @@ ArrayB: 46335249 27552001 5329 13380964 79744900 1617984 56911936 770884 6277392
 Вывод программы на GAS:
 
 ![](https://github.com/kolpakovee/avs_idz1/blob/main/tests/test4GAS.png)
-
+---
 5) Ввод: 
 ```
 100
@@ -137,7 +137,7 @@ ArrayB: 60933636 39037504 1149184 21687649 98585041 5157441 72982849 3523129 796
 Вывод программы на GAS:
 
 ![](https://github.com/kolpakovee/avs_idz1/blob/main/tests/test5GAS.png)
-
+---
 6) Ввод: 
 ```
 1
@@ -156,7 +156,7 @@ ArrayB: 1
 Вывод программы на GAS:
 
 ![](https://github.com/kolpakovee/avs_idz1/blob/main/tests/test6GAS.png)
-
+---
 7) Ввод: 
 ```
 5
