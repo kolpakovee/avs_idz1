@@ -55,9 +55,11 @@ ArrayB: 1 4 9 25 36 49 64 81 100
 ```
 
 Вывод программы на C:
+
 ![](https://github.com/kolpakovee/avs_idz1/blob/main/tests/test1C.png)
 
 Вывод программы на GAS:
+
 ![](https://github.com/kolpakovee/avs_idz1/blob/main/tests/test1GAS.png)
 
 2) Ввод: 
@@ -71,9 +73,11 @@ ArrayB:
 ```
 
 Вывод программы на C:
+
 ![](https://github.com/kolpakovee/avs_idz1/blob/main/tests/test2C.png)
 
 Вывод программы на GAS:
+
 ![](https://github.com/kolpakovee/avs_idz1/blob/main/tests/test2GAS.png)
 
 3) Ввод: 
@@ -87,9 +91,11 @@ You entered an invalid number.
 ```
 
 Вывод программы на C:
+
 ![](https://github.com/kolpakovee/avs_idz1/blob/main/tests/test3C.png)
 
 Вывод программы на GAS:
+
 ![](https://github.com/kolpakovee/avs_idz1/blob/main/tests/test3GAS.png)
 
 4) Ввод: 
@@ -104,9 +110,11 @@ ArrayB: 46335249 27552001 5329 13380964 79744900 1617984 56911936 770884 6277392
 ```
 
 Вывод программы на C:
+
 ![](https://github.com/kolpakovee/avs_idz1/blob/main/tests/test4C.png)
 
 Вывод программы на GAS:
+
 ![](https://github.com/kolpakovee/avs_idz1/blob/main/tests/test4GAS.png)
 
 5) Ввод: 
@@ -121,9 +129,11 @@ ArrayB: 60933636 39037504 1149184 21687649 98585041 5157441 72982849 3523129 796
 ```
 
 Вывод программы на C:
+
 ![](https://github.com/kolpakovee/avs_idz1/blob/main/tests/test5C.png)
 
 Вывод программы на GAS:
+
 ![](https://github.com/kolpakovee/avs_idz1/blob/main/tests/test5GAS.png)
 
 6) Ввод: 
@@ -138,9 +148,11 @@ ArrayB: 1
 ```
 
 Вывод программы на C:
+
 ![](https://github.com/kolpakovee/avs_idz1/blob/main/tests/test6C.png)
 
 Вывод программы на GAS:
+
 ![](https://github.com/kolpakovee/avs_idz1/blob/main/tests/test6GAS.png)
 
 7) Ввод: 
@@ -155,9 +167,11 @@ ArrayB: 0 0 0 0 0
 ```
 
 Вывод программы на C:
+
 ![](https://github.com/kolpakovee/avs_idz1/blob/main/tests/test7C.png)
 
 Вывод программы на GAS:
+
 ![](https://github.com/kolpakovee/avs_idz1/blob/main/tests/test7GAS.png)
 ---
 8) Ввод: 
@@ -172,9 +186,11 @@ ArrayB: 998001
 ```
 
 Вывод программы на C:
+
 ![](https://github.com/kolpakovee/avs_idz1/blob/main/tests/test8C.png)
 
 Вывод программы на GAS:
+
 ![](https://github.com/kolpakovee/avs_idz1/blob/main/tests/test8GAS.png)
 ---
 9) Ввод: 
@@ -189,9 +205,11 @@ ArrayB: 50979600 31158724 164836 15928081 85803169 2576025 62047129 1466521 6816
 ```
 
 Вывод программы на C:
+
 ![](https://github.com/kolpakovee/avs_idz1/blob/main/tests/test9C.png)
 
 Вывод программы на GAS:
+
 ![](https://github.com/kolpakovee/avs_idz1/blob/main/tests/test9GAS.png)
 ---
 10) Ввод: 
@@ -206,12 +224,16 @@ ArrayB: 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 
 ```
 
 Вывод программы на C:
+
 ![](https://github.com/kolpakovee/avs_idz1/blob/main/tests/test10C.png)
 
 Вывод программы на GAS:
+
 ![](https://github.com/kolpakovee/avs_idz1/blob/main/tests/test10GAS.png)
+
 ---
 Прошу прощения за огромное кол-во чисел, но я хотел показать, что программа работает корректно.
+
 ---
 ![4_6](https://github.com/kolpakovee/avs_idz1/blob/main/criteria/4_6.png)
 
