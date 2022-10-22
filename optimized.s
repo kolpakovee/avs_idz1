@@ -1,3 +1,8 @@
+#заменено DWORD PTR -8[rbp] -> r15d
+#загрузили переменную sizeA в регистр r13d и DWORD PTR -4[rbp] -> r13d
+#заменено DWORD PTR -20[rbp] -> r14d
+#заменено DWORD PTR -4[rbp] -> r12d
+
 .file    "main.c"
 .intel_syntax noprefix
 .text
@@ -17,18 +22,18 @@ maxLength:                      #переменная, определяющая 
 .LC1:
 .string    "%d"                #строка, для формата ввода
 .text
-.globl    getArrayA           #объявление функции
+.globl    getArrayA            #объявление функции
 .type    getArrayA, @function
-getArrayA:                      #функция заполнения массива
+getArrayA:                     #функция заполнения массива
 endbr64
 push    rbp                 #сохранение rbp на стек
-mov    rbp, rsp                #rbp := rsp
-sub    rsp, 32                 #вычитаем из rsp 32
-mov    r14d, edi #указывает где на стеке разместить первый аргумент функции (переменная sizeA)
-mov    r12d, 0    #счётчик цикла (переменная i)
-jmp    .L2                     #перемещение к L2
+mov    rbp, rsp             #rbp := rsp
+sub    rsp, 32              #вычитаем из rsp 32
+mov    r14d, edi            #загрзука sizeA (аргумента функции) в регистр r14d
+mov    r12d, 0              #загрузка переменной цикла в регистр r12d
+jmp    .L2                  #перемещение к L2
 .L3:                                #тело цикла
-mov    eax, r12d      #eax := переменная цикла
+mov    eax, r12d                    #eax := переменная цикла, загруженная в регистр r12d
 add    eax, 1                      #добавляем 1 к eax для вывода в printf
 mov    esi, eax                    #esi := eax
 lea    rax, .LC0[rip]              #загружает адрес строки LC0 (описана выше) в rax
@@ -41,14 +46,14 @@ lea    rax, .LC1[rip]              #подсказка для ввода
 mov    rdi, rax
 mov    eax, 0                      #ввод целых чисел
 call    __isoc99_scanf@PLT      #вызов функции scanf
-mov    r15d, -8[rbp]
-mov    eax, r15d      #eax := адрес в стеке на введённое значение
+mov    r15d, -8[rbp]                #загрузка переменной value в регистр r15d
+mov    eax, r15d                #заменено DWORD PTR -8[rbp] -> r15d
 mov    edx, r12d      #edx := адрес счётчика
 movsx    rdx, edx
 lea    rcx, 0[0+rdx*4]             #rcx := адрес i-го элемента массива
 lea    rdx, arrayA[rip]
 mov    DWORD PTR [rcx+rdx], eax    #присваиваем i-му элементу массива введённое значение
-add    r12d, 1        #увеличение сётчика на 1
+add    r12d, 1                     #увеличение сётчика на 1
 .L2:                                #цикл for
 mov    eax, r12d                   #eax := переменная цикла i
 cmp    eax, r14d     #сравнение eax и sizeA (аргумент функции)
