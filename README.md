@@ -1,8 +1,12 @@
 # avs_idz1
 Здравствуйте, дорогие проверяющие! 
+
 Это ИДЗ №1 по АВС студента БПИ215 Колпакова Егора Евгеньевича. 
+
 Мой вариант 39 представлен ниже:
+
 ![variant](https://github.com/kolpakovee/avs_idz1/blob/main/criteria/var.png)
+
 ---
 **Ограничения ввода:**
 1) Массив А может содержать <= 1000 элементов.
@@ -207,7 +211,7 @@ ArrayB: 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 
 Вывод программы на GAS:
 ![](https://github.com/kolpakovee/avs_idz1/blob/main/tests/test10GAS.png)
 ---
-*Прошу прощения за огромное кол-во чисел, но я хотел показать, что программа работает корректно.*
+Прошу прощения за огромное кол-во чисел, но я хотел показать, что программа работает корректно.
 ---
 ![4_6](https://github.com/kolpakovee/avs_idz1/blob/main/criteria/4_6.png)
 
@@ -264,6 +268,15 @@ int sizeA;
 
 ## 6 баллов
 ![6_1](https://github.com/kolpakovee/avs_idz1/blob/main/criteria/6_1.png)
+
+- Произведёе рефакторинг программы, все изменения можно увидеть в файле optimized.s:
+ 1) DWORD PTR -4[rbp] заменено на r12d (переменную цикла i теперь храним в регистре r12d)
+2) загрузили переменную sizeA в регистр r13d и DWORD PTR -4[rbp] заменено на r13d
+3) DWORD PTR -20[rbp] заменено r14d
+4) загрузили переменную value в регистр r15d и DWORD PTR -8[rbp] заменено r15d
+
+ - Чтобы увидеть все изменения можно сравнить файлы second.s и optimized.s!
+
 ---
 ![6_2](https://github.com/kolpakovee/avs_idz1/blob/main/criteria/6_2.png)
 ---
