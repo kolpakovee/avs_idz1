@@ -67,23 +67,23 @@ getArrayB:
 	mov	DWORD PTR -4[rbp], 0        #счётчик цикла (переменная i)
 	jmp	.L5                         #перемещение в .L5
 .L6:                                #тело цикла
-	mov	eax, DWORD PTR -4[rbp]
+	mov	eax, DWORD PTR -4[rbp]      #eax := адрес переменной цикла
 	cdqe
-	lea	rdx, 0[0+rax*4]
+	lea	rdx, 0[0+rax*4]             #rdx := адрес i-го элемента массива
 	lea	rax, arrayA[rip]
-	mov	edx, DWORD PTR [rdx+rax]
+	mov	edx, DWORD PTR [rdx+rax]    #edx := адрес в стеке на значение arrayA[i]
 	mov	eax, DWORD PTR -4[rbp]
 	cdqe
 	lea	rcx, 0[0+rax*4]
 	lea	rax, arrayA[rip]
-	mov	eax, DWORD PTR [rcx+rax]
-	imul	eax, edx
-	mov	edx, DWORD PTR -4[rbp]
+	mov	eax, DWORD PTR [rcx+rax]    #eax := адре в стеке на значение arrayA[i]
+	imul	eax, edx                #умножение arrayA[i] * arrayA[i]
+	mov	edx, DWORD PTR -4[rbp]      #erx := адрес в стеке переменной цикла
 	movsx	rdx, edx
-	lea	rcx, 0[0+rdx*4]
+	lea	rcx, 0[0+rdx*4]             #rcx := адрес i-го элемента arrayB[i]
 	lea	rdx, arrayB[rip]
-	mov	DWORD PTR [rcx+rdx], eax
-	add	DWORD PTR -4[rbp], 1
+	mov	DWORD PTR [rcx+rdx], eax    #присвоение результата arrayB[i] := arrayA[i] * arrayA[i]
+	add	DWORD PTR -4[rbp], 1        #i += 1
 .L5:                                #цикл for
 	mov	eax, DWORD PTR -4[rbp]      #eax := адрес счётчика (i)
 	cmp	eax, DWORD PTR -20[rbp]     #сравнение счётчика c sizeA (аргумент функции)
@@ -95,90 +95,90 @@ getArrayB:
 	.size	getArrayB, .-getArrayB
 	.section	.rodata
 .LC2:
-	.string	"Array B: "
+	.string	"Array B: "             #строка для вывода данных
 .LC3:
-	.string	"%d "
+	.string	"%d "                   #строка, для формата вывода
 	.text
 	.globl	outResult
 	.type	outResult, @function
 outResult:
 	endbr64
-	push	rbp
-	mov	rbp, rsp
-	sub	rsp, 32
-	mov	DWORD PTR -20[rbp], edi
-	lea	rax, .LC2[rip]
-	mov	rdi, rax
-	mov	eax, 0
-	call	printf@PLT
-	mov	DWORD PTR -4[rbp], 0
-	jmp	.L8
+	push	rbp                     #сохранение rbp на стек
+	mov	rbp, rsp                    #rbp := rsp
+	sub	rsp, 32                     #вычитаем из rsp 32
+	mov	DWORD PTR -20[rbp], edi     #указывает где на стеке разместить первый аргумент функции (переменная sizeA)
+	lea	rax, .LC2[rip]              #rax := строка для вывода
+	mov	rdi, rax                    #rdi := rax
+	mov	eax, 0                      #eax := 0
+	call	printf@PLT              #вызов функции printf
+	mov	DWORD PTR -4[rbp], 0        #переменная цикла i := 0
+	jmp	.L8                         #переход к L8
 .L9:
-	mov	eax, DWORD PTR -4[rbp]
+	mov	eax, DWORD PTR -4[rbp]      #eax := переменная цикла i
 	cdqe
-	lea	rdx, 0[0+rax*4]
+	lea	rdx, 0[0+rax*4]             #rdx := i-й элемент arrayB[i]
 	lea	rax, arrayB[rip]
-	mov	eax, DWORD PTR [rdx+rax]
+	mov	eax, DWORD PTR [rdx+rax]    #eax := адрес в стеке на arrayB[i]
 	mov	esi, eax
 	lea	rax, .LC3[rip]
-	mov	rdi, rax
+	mov	rdi, rax                    #rdi := формат вывода
 	mov	eax, 0
-	call	printf@PLT
-	add	DWORD PTR -4[rbp], 1
+	call	printf@PLT              #вызов функции printf
+	add	DWORD PTR -4[rbp], 1        #переменная цикла i += 1
 .L8:
-	mov	eax, DWORD PTR -4[rbp]
-	cmp	eax, DWORD PTR -20[rbp]
-	jl	.L9
+	mov	eax, DWORD PTR -4[rbp]      #eax := переменная цикла i
+	cmp	eax, DWORD PTR -20[rbp]     #eax := аргумент метода (sizeA)
+	jl	.L9                         #если i < sizeA -> переход в .L9
 	nop
 	nop
-	leave
-	ret
+	leave                           #очистка стека
+	ret                             #возврат в вызывающую функцию
 	.size	outResult, .-outResult
 	.section	.rodata
 .LC4:
-	.string	"Enter length: "
+	.string	"Enter length: "        #строка для вывода
 	.align 8
 .LC5:
-	.string	"You entered an invalid number."
+	.string	"You entered an invalid number." #строка для вывода
 	.text
 	.globl	main
 	.type	main, @function
 main:
 	endbr64
-	push	rbp
-	mov	rbp, rsp
-	sub	rsp, 16
+	push	rbp     #save caller's frame pointer
+	mov	rbp, rsp    #establish our frame pointer
+	sub	rsp, 16     #local variables
 	lea	rax, .LC4[rip]
-	mov	rdi, rax
-	mov	eax, 0
-	call	printf@PLT
+	mov	rdi, rax    #rdi := rax
+	mov	eax, 0      #eax := 0
+	call	printf@PLT  #вызов функции printf
 	lea	rax, -4[rbp]
-	mov	rsi, rax
-	lea	rax, .LC1[rip]
-	mov	rdi, rax
-	mov	eax, 0
-	call	__isoc99_scanf@PLT
-	mov	edx, DWORD PTR -4[rbp]
-	mov	eax, DWORD PTR maxLength[rip]
-	cmp	edx, eax
-	jle	.L11
-	lea	rax, .LC5[rip]
-	mov	rdi, rax
-	mov	eax, 0
-	call	printf@PLT
-	mov	eax, 0
-	jmp	.L13
+	mov	rsi, rax        #rsi := rax
+	lea	rax, .LC1[rip]  #получение формата считывания
+	mov	rdi, rax    #rdi := rax
+	mov	eax, 0      #eax := 0
+	call	__isoc99_scanf@PLT  #вызов функции scanf
+	mov	edx, DWORD PTR -4[rbp]  #edx := sizeA
+	mov	eax, DWORD PTR maxLength[rip]   #eax := maxLength
+	cmp	edx, eax                        #edx > eax?
+	jle	.L11                            #если edx <= eax -> переход к .L11
+	lea	rax, .LC5[rip]                  #rax := строка для вывода
+	mov	rdi, rax                        #rdi := rax
+	mov	eax, 0                          #eax := 0
+	call	printf@PLT                  #вызов функции printf
+	mov	eax, 0                          #eax := 0
+	jmp	.L13                            #переход к .L13
 .L11:
-	mov	eax, DWORD PTR -4[rbp]
-	mov	edi, eax
-	call	getArrayA
-	mov	eax, DWORD PTR -4[rbp]
-	mov	edi, eax
-	call	getArrayB
-	mov	eax, DWORD PTR -4[rbp]
-	mov	edi, eax
-	call	outResult
-	mov	eax, 0
+	mov	eax, DWORD PTR -4[rbp]          #eax := sizeA
+	mov	edi, eax                        #edi := eax
+	call	getArrayA                   #вызов функции getArrayA
+	mov	eax, DWORD PTR -4[rbp]          #eax := sizeA
+	mov	edi, eax                        #edi := eax
+	call	getArrayB                   #вызов функции getArrayB
+	mov	eax, DWORD PTR -4[rbp]          #eax := sizeA
+	mov	edi, eax                        #edi := eax
+	call	outResult                   #вызов функции outResult
+	mov	eax, 0                          #eax := 0
 .L13:
-	leave
-	ret
+	leave                               #очистка стека
+	ret                                 #возврат в вызывающую функцию
