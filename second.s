@@ -21,52 +21,52 @@ maxLength:                      #переменная, определяющая 
 	.type	getArrayA, @function
 getArrayA:                      #функция заполнения массива
 	endbr64
-	push	rbp                 сохранение rbp на стек
-	mov	rbp, rsp                rbp := rsp
-	sub	rsp, 32                 вычитаем из rsp 32
-	mov	DWORD PTR -20[rbp], edi указывает где на стеке разместить первый аргумент функции (переменная sizeA)
-	mov	DWORD PTR -4[rbp], 0    счётчик цикла (переменная i)
-	jmp	.L2                     перемещение к L2
-.L3:                                тело цикла
-	mov	eax, DWORD PTR -4[rbp]      eax := переменная цикла
-	add	eax, 1                      добавляем 1 к eax для вывода в printf
-	mov	esi, eax                    esi := eax
-	lea	rax, .LC0[rip]              загружает адрес строки LC0 (описана выше) в rax
-	mov	rdi, rax                    rdi := rax
-	mov	eax, 0                      ввод целых чисел
-	call	printf@PLT              вызов функции printf
-	lea	rax, -8[rbp]                rax := адрес вводимой переменной (адрес локальной переменной)
+	push	rbp                 #сохранение rbp на стек
+	mov	rbp, rsp                #rbp := rsp
+	sub	rsp, 32                 #вычитаем из rsp 32
+	mov	DWORD PTR -20[rbp], edi #указывает где на стеке разместить первый аргумент функции (переменная sizeA)
+	mov	DWORD PTR -4[rbp], 0    #счётчик цикла (переменная i)
+	jmp	.L2                     #перемещение к L2
+.L3:                                #тело цикла
+	mov	eax, DWORD PTR -4[rbp]      #eax := переменная цикла
+	add	eax, 1                      #добавляем 1 к eax для вывода в printf
+	mov	esi, eax                    #esi := eax
+	lea	rax, .LC0[rip]              #загружает адрес строки LC0 (описана выше) в rax
+	mov	rdi, rax                    #rdi := rax
+	mov	eax, 0                      #ввод целых чисел
+	call	printf@PLT              #вызов функции printf
+	lea	rax, -8[rbp]                #rax := адрес вводимой переменной (адрес локальной переменной)
 	mov	rsi, rax
-	lea	rax, .LC1[rip]              подсказка для ввода
+	lea	rax, .LC1[rip]              #подсказка для ввода
 	mov	rdi, rax
-	mov	eax, 0                      ввод целых чисел
-	call	__isoc99_scanf@PLT      вызов функции scanf
-	mov	eax, DWORD PTR -8[rbp]      eax := адрес в стеке на введённое значение
-	mov	edx, DWORD PTR -4[rbp]      edx := адрес счётчика
+	mov	eax, 0                      #ввод целых чисел
+	call	__isoc99_scanf@PLT      #вызов функции scanf
+	mov	eax, DWORD PTR -8[rbp]      #eax := адрес в стеке на введённое значение
+	mov	edx, DWORD PTR -4[rbp]      #edx := адрес счётчика
 	movsx	rdx, edx
-	lea	rcx, 0[0+rdx*4]             rcx := адрес i-го элемента массива
+	lea	rcx, 0[0+rdx*4]             #rcx := адрес i-го элемента массива
 	lea	rdx, arrayA[rip]
-	mov	DWORD PTR [rcx+rdx], eax    присваиваем i-му элементу массива введённое значение
-	add	DWORD PTR -4[rbp], 1        увеличение сётчика на 1
-.L2:                                цикл for
+	mov	DWORD PTR [rcx+rdx], eax    #присваиваем i-му элементу массива введённое значение
+	add	DWORD PTR -4[rbp], 1        #увеличение сётчика на 1
+.L2:                                #цикл for
 	mov	eax, DWORD PTR -4[rbp]
-	cmp	eax, DWORD PTR -20[rbp]     сравнение eax и sizeA (аргумент функции)
-	jl	.L3                         если eax < sizeA переходим в .L3
+	cmp	eax, DWORD PTR -20[rbp]     #сравнение eax и sizeA (аргумент функции)
+	jl	.L3                         #если eax < sizeA переходим в .L3
 	nop
 	nop
-	leave                           очистка стека
-	ret                             взоврат в вызывающую функцию
-	.size	getArrayA, .-getArrayA  объявление функции
+	leave                           #очистка стека
+	ret                             #взоврат в вызывающую функцию
+	.size	getArrayA, .-getArrayA  #объявление функции
 	.globl	getArrayB
 	.type	getArrayB, @function
 getArrayB:
 	endbr64
-	push	rbp                     сохраняем rbp на стек
-	mov	rbp, rsp                    rbp := rsp
-	mov	DWORD PTR -20[rbp], edi     указывает где на стеке разместить первый аргумент функции (переменная sizeA)
-	mov	DWORD PTR -4[rbp], 0        счётчик цикла (переменная i)
-	jmp	.L5                         перемещение в .L5
-.L6:                                тело цикла
+	push	rbp                     #сохраняем rbp на стек
+	mov	rbp, rsp                    #rbp := rsp
+	mov	DWORD PTR -20[rbp], edi     #указывает где на стеке разместить первый аргумент функции (переменная sizeA)
+	mov	DWORD PTR -4[rbp], 0        #счётчик цикла (переменная i)
+	jmp	.L5                         #перемещение в .L5
+.L6:                                #тело цикла
 	mov	eax, DWORD PTR -4[rbp]
 	cdqe
 	lea	rdx, 0[0+rax*4]
@@ -84,14 +84,14 @@ getArrayB:
 	lea	rdx, arrayB[rip]
 	mov	DWORD PTR [rcx+rdx], eax
 	add	DWORD PTR -4[rbp], 1
-.L5:                                цикл for
-	mov	eax, DWORD PTR -4[rbp]      eax := адрес счётчика (i)
-	cmp	eax, DWORD PTR -20[rbp]     сравнение счётчика c sizeA (аргумент функции)
-	jl	.L6                         если eax < sizeA переходим в .L6
+.L5:                                #цикл for
+	mov	eax, DWORD PTR -4[rbp]      #eax := адрес счётчика (i)
+	cmp	eax, DWORD PTR -20[rbp]     #сравнение счётчика c sizeA (аргумент функции)
+	jl	.L6                         #если eax < sizeA переходим в .L6
 	nop
 	nop
-	pop	rbp                         очистка стека в исходное состояние
-	ret                             возврат в вызывающую функцию
+	pop	rbp                         #очистка стека в исходное состояние
+	ret                             #возврат в вызывающую функцию
 	.size	getArrayB, .-getArrayB
 	.section	.rodata
 .LC2:
