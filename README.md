@@ -37,7 +37,8 @@
 ![4_4](https://github.com/kolpakovee/avs_idz1/blob/main/criteria/4_4.png)
 
 - Программа скомпилирована и скомпонована без опций отладки
-(доделать gcc second.s -o main2)
+![compilation3](https://github.com/kolpakovee/avs_idz1/blob/main/criteria/compilation3)
+
 ---
 ![4_5](https://github.com/kolpakovee/avs_idz1/blob/main/criteria/4_5.png)
 
